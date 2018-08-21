@@ -1,0 +1,30 @@
+•	What are agents in Java? ---- Byteman
+•	Native agents vs java agents
+•	JVM TI (JVM Tool Interface)
+•	What can agents do?
+•	Examples of agents (jdwp, takipi)
+•	Demo of overOps
+o	Setup
+o	Walkthrough of dashboards
+o	Alerts
+
+
+Multiple premains and  agent main
+post-factum agents
+
+Javassist
+ASM 
+
+ByteBuddy
+Byteman
+JRebel
+https://www.youtube.com/watch?v=tlcF8awgUEE
+
+https://stackoverflow.com/questions/2261947/are-there-alternatives-to-cglib
+
+
+'Premain-Class': 'com.example.agent.Agent',
+                'Agent-Class': 'com.example.agent.Agent',
+                'Can-Redefine-Classes': 'true',
+                'Can-Retransform-Classes': 'true',
+                'Can-Set-Native-Method-Prefix': 'true',

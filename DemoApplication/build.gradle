@@ -1,0 +1,38 @@
+apply plugin: 'java'
+
+group = "com.example"
+jar.baseName = 'DemoApplication'
+version = 0.1
+
+repositories {
+    maven {
+            url "http://maven.ia55.net/arcesium/"
+        }
+}
+
+dependencies {
+    compile 'net.bytebuddy:byte-buddy:1.4.25'
+    testCompile "junit:junit:4.11"
+}
+
+compileJava {
+    options.debug = true
+}
+
+jar {
+    archiveName = "${rootProject.name}-${rootProject.version}.jar"
+
+    //build fat jar
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }}
+
+    manifest {
+        attributes(
+                'Main-Class': 'org.example.callspy.example.RandomClassCallingThings',
+                'Implementation-Title': "DemoApplication",
+                'Implementation-Version': rootProject.version,
+                'Built-By': System.getProperty('user.name'),
+                'Built-Date': new Date(),
+                'Built-JDK': System.getProperty('java.version')
+        )
+    }
+}
